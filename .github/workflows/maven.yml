@@ -31,8 +31,9 @@ jobs:
       # run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/target/springRest-movieProject-1-0.0.1-SNAPSHOT.jar &
       run: |
         sudo kill -9 $(sudo lsof -t -i:8080) || true
-        nohup sudo java -jar /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/target/springRest-movieProject-1-0.0.1-SNAPSHOT.jar > logs/application.log 2>&1 &
-        tail -f logs/application.log
+        sudo nohup java -jar /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/target/springRest-movieProject-1-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+      tail -f /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/logs/application.log
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph
