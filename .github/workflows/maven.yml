@@ -28,11 +28,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Execute Jar File
+      # Below single run also working
       # run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/target/springRest-movieProject-1-0.0.1-SNAPSHOT.jar &
       run: |
         sudo kill -9 $(sudo lsof -t -i:8080) || true
         sudo nohup java -jar /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/target/springRest-movieProject-1-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
-        tail -f /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/logs/application.log
+        # tail -f /home/ec2-user/actions-runner/_work/BL-SpringBoot-MovieProject/BL-SpringBoot-MovieProject/logs/application.log
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
